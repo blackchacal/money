@@ -1,10 +1,12 @@
-from flask import Flask
+from .app import app, db
+from .views import *
+from .models import *
 
-# app name
-app = Flask(__name__)
+def create_tables():
+	db.connect()
+	db.create_tables([Currency, Rate, Order], safe=True)
+	db.close()
 
-# routes
-
-@app.route('/')
-def hello_world():
-	return 'Hello, World!'
+if __name__ == '__main__':
+    create_tables()
+    app.run()
