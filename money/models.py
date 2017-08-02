@@ -1,7 +1,7 @@
 import datetime
 
 from peewee import *
-from .app import db
+from money.app import db
 
 class BaseModel(Model):
 	class Meta:
@@ -40,3 +40,6 @@ class Order(BaseModel):
 	amount = FloatField()
 	price = FloatField()
 	created_at = DateTimeField(default=datetime.datetime.now)
+
+db.connect()
+db.close()

@@ -1,7 +1,6 @@
 from flask import request
-
-from .app import app, db
-from .models import *
+from money.app import app, db
+from money.models import *
 
 # handle database connection on request
 @app.before_request
